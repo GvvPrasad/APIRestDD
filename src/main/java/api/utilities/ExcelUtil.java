@@ -1,7 +1,10 @@
 package api.utilities;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -72,7 +75,7 @@ public class ExcelUtil extends ObjectRespo{
 		double cellValue = sh.getRow(rowNum).getCell(colNum).getNumericCellValue();;
 		return cellValue;
 	}
-	
+
 	//Change cell values to String
 	public static String setCellDataToString(int rowNum, int colNum) {
 		XSSFCell cell = null;
@@ -101,11 +104,45 @@ public class ExcelUtil extends ObjectRespo{
 				if (data[i-1][j] == null) {
 					data[i-1][j] = "";
 				}
-				
+
+				//Check if cell has DATE vale or not
+
+
 				//change values to string
 				data[i-1][j] = ExcelUtil.setCellDataToString(i, j);
 			}
 		}
 		return data;
 	}
+
+	//Create a Excel File and new sheet
+	public static String createExcelFile(String filename, String sheetName) throws IOException {
+		XSSFWorkbook wb = new XSSFWorkbook();
+		String dest = projectPath+"//src//test//resources//"+filename+".xlsx";
+		File destination = new File(dest);
+		FileOutputStream fileout = new FileOutputStream(destination);
+		wb.createSheet(sheetName); 
+		wb.write(fileout);
+		fileout.close(); 
+		return dest;
+	}
+
+	//Add Sheet to existing excel
+	public static void createSheet(String sheetName) {
+		wb.createSheet(sheetName); 
+	}
+	
+	//Create Row
+	public static void createRow(int i, int j, String data) {
+		sh.createRow(i).createCell(j).setCellValue(data);
+	}
+	
+	//Close Excel
+	public static void closeExcel(String filePath) throws IOException {
+		FileOutputStream fileout = new FileOutputStream(filePath);
+		wb.write(fileout);
+		fileout.close();
+	}
+
+
 }

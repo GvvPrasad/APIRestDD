@@ -11,17 +11,21 @@ public class ObjectRespo{
 
 	//Project default Variable and Methods
 	public static String projectPath = System.getProperty("user.dir");
-	
-	//Post Variables
-	public static String postBaseUrl = "http://dummy.restapiexample.com";
-	public static String postParameters ="/api/v1/create";
 
 	//Get Variables
-	public static String getBaseUrl = "http://dummy.restapiexample.com/api/v1/employees";
+	public static String getBaseUrl = "https://api.thesmsworks.co.uk/";
+
+	//Post Variables
+	public static String postBaseUrl = "https://reqbin.com";
+
+	//Put Variables
+	public static String putBaseUrl = "https://reqres.in";
+
+	//Patch Variables
+	public static String patchBaseUrl = "https://reqres.in";
 
 	//Delete Variables
-	public static String deleteBaseUrl = "http://dummy.restapiexample.com";
-	public static String deleteParameters = "/api/v1/delete/ID";
+	public static String deleteBaseUrl = "https://reqres.in";
 
 	//Excel Utilizes Files variables
 	protected static XSSFWorkbook wb;
@@ -32,5 +36,6 @@ public class ObjectRespo{
 	protected static FileOutputStream fileOut;
 
 	//Test Data Files
-	public static String testData = projectPath+"//src//test//resources//TestData.xlsx";
+	public static String testPath = projectPath+"//src//test//resources//PathData.xlsx";
+	public static String testData = projectPath+"//src//test//resources//parameterData.xlsx";
 }
